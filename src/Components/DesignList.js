@@ -10,9 +10,11 @@ import {
 } from "@mui/material";
 
 import { DATA } from "./constants";
+import Modal from "./Modal";
 
 const DesignList = () => {
   const [data, setData] = useState(DATA);
+  const [openModal, setOpenModal] = useState(false);
 
   const handleLike = (id) => {
     let dataClone = [...data];
@@ -20,6 +22,10 @@ const DesignList = () => {
 
     dataClone[selectedIndex].likes = dataClone[selectedIndex].likes + 1;
     setData(dataClone);
+  };
+
+  const toggleModalOpen = (id) => {
+    setOpenModal(!openModal);
   };
 
   return (
@@ -48,7 +54,12 @@ const DesignList = () => {
                     sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                     aria-label={`info about ${item.id}`}
                   >
-                    <InfoIcon style={{ color: "grey", display: "flex" }} />
+                    <InfoIcon
+                      style={{ color: "grey", display: "flex" }}
+                      onClick={() => {
+                        toggleModalOpen(item.id);
+                      }}
+                    />
                   </IconButton>
                 </>
               }
@@ -56,6 +67,8 @@ const DesignList = () => {
           </ImageListItem>
         ))}
       </ImageList>
+
+      <Modal openModal={openModal} toggleModalOpen={toggleModalOpen} />
     </>
   );
 };
