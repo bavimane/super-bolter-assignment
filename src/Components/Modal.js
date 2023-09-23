@@ -46,6 +46,7 @@ export default function Modal({
               onChange={(e) => {
                 setCommentValue(e.target.value);
               }}
+              style={{ width: "50%" }}
             />
             <Button
               variant="outlined"
