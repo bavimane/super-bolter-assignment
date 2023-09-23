@@ -63,8 +63,8 @@ export default function Modal({
 
           {comments.map((comment, index) => {
             return (
-              <>
-                <div style={{ display: "flex", gap: "6px" }} key={index}>
+              <div key={index}>
+                <div style={{ display: "flex", gap: "6px" }}>
                   <h5>{comment}</h5>
                   <IconButton
                     aria-label="delete"
@@ -79,7 +79,7 @@ export default function Modal({
                   </IconButton>
                 </div>
                 <Divider />
-              </>
+              </div>
             );
           })}
         </div>
