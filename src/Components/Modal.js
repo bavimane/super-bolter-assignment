@@ -11,13 +11,13 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Modal({ openModal, toggleModalOpen }) {
+export default function Modal({ openModal, handleModal }) {
   return (
     <Dialog
       open={openModal}
       TransitionComponent={Transition}
       keepMounted
-      onClose={toggleModalOpen}
+      onClose={handleModal}
       aria-describedby="alert-dialog-slide-description"
     >
       <DialogTitle>{"Use Google's location service?"}</DialogTitle>
@@ -28,8 +28,8 @@ export default function Modal({ openModal, toggleModalOpen }) {
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={toggleModalOpen}>Disagree</Button>
-        <Button onClick={toggleModalOpen}>Agree</Button>
+        <Button onClick={handleModal}>Disagree</Button>
+        <Button onClick={handleModal}>Agree</Button>
       </DialogActions>
     </Dialog>
   );

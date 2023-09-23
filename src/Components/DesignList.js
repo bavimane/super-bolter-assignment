@@ -24,7 +24,7 @@ const DesignList = () => {
     setData(dataClone);
   };
 
-  const toggleModalOpen = (id) => {
+  const handleModal = (id) => {
     setOpenModal(!openModal);
   };
 
@@ -54,7 +54,7 @@ const DesignList = () => {
                     sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                     aria-label={`info about ${item.id}`}
                     onClick={() => {
-                      toggleModalOpen(item.id);
+                      handleModal(item.id);
                     }}
                   >
                     <InfoIcon style={{ color: "grey", display: "flex" }} />
@@ -66,7 +66,7 @@ const DesignList = () => {
         ))}
       </ImageList>
 
-      <Modal openModal={openModal} toggleModalOpen={toggleModalOpen} />
+      <Modal openModal={openModal} handleModal={handleModal} />
     </>
   );
 };
