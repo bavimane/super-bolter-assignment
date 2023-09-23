@@ -7,6 +7,8 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
 import TextField from "@mui/material/TextField";
 import Divider from "@mui/material/Divider";
+import IconButton from "@mui/material/IconButton";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -62,7 +64,20 @@ export default function Modal({
           {comments.map((comment, index) => {
             return (
               <>
-                <h5 key={index}>{comment}</h5>
+                <div style={{ display: "flex", gap: "6px" }}>
+                  <h5 key={index}>{comment}</h5>
+                  <IconButton
+                    aria-label="delete"
+                    onClick={() => {
+                      const filteredComments = comments.filter(
+                        (item) => item !== comment
+                      );
+                      handleAddComment([...filteredComments]);
+                    }}
+                  >
+                    <DeleteIcon />
+                  </IconButton>
+                </div>
                 <Divider />
               </>
             );
