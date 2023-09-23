@@ -64,8 +64,8 @@ export default function Modal({
           {comments.map((comment, index) => {
             return (
               <>
-                <div style={{ display: "flex", gap: "6px" }}>
-                  <h5 key={index}>{comment}</h5>
+                <div style={{ display: "flex", gap: "6px" }} key={index}>
+                  <h5>{comment}</h5>
                   <IconButton
                     aria-label="delete"
                     onClick={() => {
