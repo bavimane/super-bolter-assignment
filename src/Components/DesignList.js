@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import InfoIcon from "@mui/icons-material/Info";
 import {
@@ -11,6 +12,16 @@ import {
 import { DATA } from "./constants";
 
 const DesignList = () => {
+  const [data, setData] = useState(DATA);
+
+  const handleLike = (id) => {
+    let dataClone = [...data];
+    const selectedIndex = dataClone.findIndex((item) => item.id === id);
+
+    dataClone[selectedIndex].likes = dataClone[selectedIndex].likes + 1;
+    setData(dataClone);
+  };
+
   return (
     <>
       <ImageList cols={3} gap={8}>
@@ -24,6 +35,7 @@ const DesignList = () => {
                   <IconButton
                     sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                     aria-label={`info about ${item.id}`}
+                    onClick={() => handleLike(item.id)}
                   >
                     <Badge badgeContent={item.likes} color="primary">
                       <ThumbUpAltIcon
