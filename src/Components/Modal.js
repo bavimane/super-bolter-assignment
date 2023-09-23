@@ -12,7 +12,12 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-export default function Modal({ openModal, toggleModal, selectedItem }) {
+export default function Modal({
+  openModal,
+  toggleModal,
+  selectedItem,
+  handleAddComment,
+}) {
   const [commentValue, setCommentValue] = React.useState("");
   const comments = (selectedItem && selectedItem.comments) || [];
 
@@ -44,9 +49,10 @@ export default function Modal({ openModal, toggleModal, selectedItem }) {
             />
             <Button
               variant="outlined"
-              //   onClick={() => {
-              //     handleAddComment();
-              //   }}
+              onClick={() => {
+                handleAddComment([...comments, commentValue]);
+                setCommentValue("");
+              }}
             >
               Add
             </Button>

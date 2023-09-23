@@ -34,6 +34,16 @@ const DesignList = () => {
     setSelectedItem(selectedData);
   };
 
+  const handleAddComment = (updatedComments) => {
+    let dataClone = [...data];
+    const selectedIndex = dataClone.findIndex(
+      (item) => item.id === selectedItem.id
+    );
+
+    dataClone[selectedIndex].comments = updatedComments;
+    setData(dataClone);
+  };
+
   return (
     <>
       <ImageList cols={3} gap={8}>
@@ -77,6 +87,7 @@ const DesignList = () => {
         openModal={openModal}
         toggleModal={toggleModal}
         selectedItem={selectedItem}
+        handleAddComment={handleAddComment}
       />
     </>
   );
