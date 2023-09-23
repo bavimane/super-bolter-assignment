@@ -15,6 +15,7 @@ import Modal from "./Modal";
 const DesignList = () => {
   const [data, setData] = useState(DATA);
   const [openModal, setOpenModal] = useState(false);
+  const [selectedItem, setSelectedItem] = useState({});
 
   const handleLike = (id) => {
     let dataClone = [...data];
@@ -24,8 +25,13 @@ const DesignList = () => {
     setData(dataClone);
   };
 
-  const handleModal = (id) => {
+  const toggleModal = () => {
     setOpenModal(!openModal);
+  };
+
+  const handleSaveSelectedItem = (id) => {
+    const selectedData = data.find((item) => item.id === id);
+    setSelectedItem(selectedData);
   };
 
   return (
@@ -54,7 +60,8 @@ const DesignList = () => {
                     sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                     aria-label={`info about ${item.id}`}
                     onClick={() => {
-                      handleModal(item.id);
+                      handleSaveSelectedItem(item.id);
+                      toggleModal();
                     }}
                   >
                     <InfoIcon style={{ color: "grey", display: "flex" }} />
@@ -66,7 +73,11 @@ const DesignList = () => {
         ))}
       </ImageList>
 
-      <Modal openModal={openModal} handleModal={handleModal} />
+      <Modal
+        openModal={openModal}
+        toggleModal={toggleModal}
+        selectedItem={selectedItem}
+      />
     </>
   );
 };
