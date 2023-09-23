@@ -16,7 +16,7 @@ const DesignList = () => {
       <ImageList cols={3} gap={8}>
         {DATA.map((item) => (
           <ImageListItem key={item.id}>
-            <img src={item.image} alt="" />
+            <img src={item.image} alt={`info about ${item.id}`} />
 
             <ImageListItemBar
               actionIcon={
