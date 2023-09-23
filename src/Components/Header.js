@@ -8,13 +8,17 @@ const Header = () => {
   return (
     <>
       <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="transparent">
+        <AppBar
+          position="static"
+          color="transparent"
+          style={{ background: "#8080803d" }}
+        >
           <Toolbar>
             <BoltIcon />
             <Typography
-              variant="h6"
+              variant="h5"
               component="div"
-              sx={{ flexGrow: 1, fontWeight: "bold" }}
+              sx={{ flexGrow: 1, marginLeft: 2 }}
             >
               Superbolt Interiors
             </Typography>
