@@ -53,13 +53,11 @@ const DesignList = () => {
                   <IconButton
                     sx={{ color: "rgba(255, 255, 255, 0.54)" }}
                     aria-label={`info about ${item.id}`}
+                    onClick={() => {
+                      toggleModalOpen(item.id);
+                    }}
                   >
-                    <InfoIcon
-                      style={{ color: "grey", display: "flex" }}
-                      onClick={() => {
-                        toggleModalOpen(item.id);
-                      }}
-                    />
+                    <InfoIcon style={{ color: "grey", display: "flex" }} />
                   </IconButton>
                 </>
               }
