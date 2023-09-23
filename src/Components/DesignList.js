@@ -30,6 +30,7 @@ const DesignList = () => {
             <img src={item.image} alt={`info about ${item.id}`} />
 
             <ImageListItemBar
+              title={item.title}
               actionIcon={
                 <>
                   <IconButton
